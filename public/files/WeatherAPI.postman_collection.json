@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "bd925c6a-9b39-46a5-b4c7-174be7024136",
+		"name": "localhost API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/register?name=testUser&password=test123&email=contact@olivianewberry.co.uk",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"register"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "testUser"
+						},
+						{
+							"key": "password",
+							"value": "test123"
+						},
+						{
+							"key": "email",
+							"value": "contact@olivianewberry.co.uk"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wrong Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/login?email=contact@olivianewberry.co.uk&password=test123s",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "contact@olivianewberry.co.uk"
+						},
+						{
+							"key": "password",
+							"value": "test123s"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login correct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/login?email=contact@olivianewberry.co.uk&password=test123",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "contact@olivianewberry.co.uk"
+						},
+						{
+							"key": "password",
+							"value": "test123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/get_user?token={{jwt}}",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"get_user"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{jwt}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/get_weather?token={{jwt}}&query=London",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"get_weather"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{jwt}}"
+						},
+						{
+							"key": "query",
+							"value": "London"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/get_locations?token={{jwt}}&query=lesma",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"get_locations"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{jwt}}"
+						},
+						{
+							"key": "query",
+							"value": "lesma"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://olivianewberry.co.uk/api/logout?token={{jwt}}",
+					"protocol": "https",
+					"host": [
+						"olivianewberry",
+						"co",
+						"uk"
+					],
+					"path": [
+						"api",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{jwt}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY0OTI4NDE1NSwiZXhwIjoxNjQ5Mjg3NzU1LCJuYmYiOjE2NDkyODQxNTUsImp0aSI6ImxnamVKWTV5ZTl2YnpyaUgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.5chuFZ4ULy5az9lsLJstKk_FcNCt4JcfceahqIpAfXc"
+		}
+	]
+}
