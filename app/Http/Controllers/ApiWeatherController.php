@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class ApiWeatherController extends Controller
 {
     /**
      * Executes the curl request to get the weather data
+     *
      * @param  string $url
      * @return string Response
      */
-    public function curlRequest($url)
+    private function curlRequest($url)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -27,12 +29,21 @@ class ApiWeatherController extends Controller
     }
 
     /**
-     * Function that drives the API calls to weatherapi.com
+     * Get weather data from the API
      *
      * @return \Illuminate\Http\Response
      */
     public function get_weather(Request $request)
     {
+        $validator = Validator::make($request->only('token','query'), [
+            'token' => 'required|string',
+            'query' => 'required|string|min:3'
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()], 200);
+        }
         $query = $request->query('query');
         $url = env('WEATHER_URL').'current.json?key='.env('WEATHER_KEY').'&q=' . $query;
         $data = $this->curlRequest($url);
@@ -41,12 +52,21 @@ class ApiWeatherController extends Controller
     }
 
     /**
-     * Function that returns a list of locations based on the query value
+     * List all the locations
      *
      * @return \Illuminate\Http\Response
      */
     public function get_locations(Request $request)
     {
+        $validator = Validator::make($request->only('token','query'), [
+            'token' => 'required|string',
+            'query' => 'required|string|min:3'
+        ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()], 200);
+        }
         $query = $request->query('query');
         $url = env('WEATHER_URL').'search.json?key='.env('WEATHER_KEY').'&q=' . $query;
         $data = $this->curlRequest($url);

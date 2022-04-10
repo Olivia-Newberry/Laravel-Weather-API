@@ -1,0 +1,242 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      title: 'Authenticate user and return token'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: bahringer.charity@example.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters. Must not be greater than 50 characters.'
+        required: true
+        example: vvrjhdvbjpjrshdlxnollckxnlgrcmrforqwork
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 400
+        content: '{"success":false,"message":"Login credentials are invalid."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      title: 'Register a new user'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: velit
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: yrenner@example.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters. Must not be greater than 50 characters.'
+        required: true
+        example: mzcptgngjeyfuaepwdtyxbicddlhcdxefwd
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"message":"User created successfully","data":{"name":"velit","email":"yrenner@example.com","updated_at":"2022-04-10T11:15:31.000000Z","created_at":"2022-04-10T11:15:31.000000Z","id":4}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/get_user
+    metadata:
+      title: 'Return authenticated user details'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: a
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":"Token is Invalid"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/logout
+    metadata:
+      title: 'Logout user and invalidate token'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: delectus
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":"Token is Invalid"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/get_locations
+    metadata:
+      title: 'List all the locations'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+      query:
+        name: query
+        description: 'Must be at least 3 characters.'
+        required: true
+        example: v
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":"Token is Invalid"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '54'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/get_weather
+    metadata:
+      title: 'Get weather data from the API'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: ''
+        required: true
+        example: sed
+        type: string
+        custom: []
+      query:
+        name: query
+        description: 'Must be at least 3 characters.'
+        required: true
+        example: hgb
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":"Token is Invalid"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '55'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []

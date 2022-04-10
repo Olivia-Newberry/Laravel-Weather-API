@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiUserController extends Controller
 {
+    /**
+     * Register a new user
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request)
     {
     	//Validate data
@@ -41,6 +46,11 @@ class ApiUserController extends Controller
         ], Response::HTTP_OK);
     }
 
+    /**
+     * Authenticate user and return token
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -57,7 +67,6 @@ class ApiUserController extends Controller
         }
 
         //Request is validated
-        //Crean token
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json([
@@ -79,6 +88,11 @@ class ApiUserController extends Controller
         ]);
     }
 
+    /**
+     * Logout user and invalidate token
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         //valid credential
@@ -107,11 +121,22 @@ class ApiUserController extends Controller
         }
     }
 
+    /**
+     * Return authenticated user details
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function get_user(Request $request)
     {
-        $this->validate($request, [
+        //valid credential
+        $validator = Validator::make($request->only('token'), [
             'token' => 'required'
         ]);
+
+        //Send failed response if request is not valid
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()], 200);
+        }
 
         $user = JWTAuth::authenticate($request->token);
 
