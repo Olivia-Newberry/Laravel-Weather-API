@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel Weather API</title>
+        <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,6 +24,13 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="px-4 py-5 border-b dark:border-gray-700">
+                        <h1 class="text-center leading-6 text-gray-900 dark:text-white">
+                            {{ config('app.name') }}
+                        </h1>
+                        <p class="mt-1 max-w-2xl text-sm text-center leading-5 text-gray-500 dark:text-gray-400">
+                            A simple example of a Laravel application used to make API calls to an external API.
+                        </p>
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
